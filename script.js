@@ -1,6 +1,6 @@
 async function getWeather(city = "Lviv") {
   return await fetch(
-    `http://api.weatherstack.com/current?access_key=128e9f062ce7ce0e464f0847488e6ce7&query=${city}`
+    `https://api.weatherstack.com/current?access_key=128e9f062ce7ce0e464f0847488e6ce7&query=${city}`
   );
 }
 
