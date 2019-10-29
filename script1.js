@@ -1,6 +1,6 @@
 async function getWeather(city = "Lviv") {
     return await fetch(
-      `https://api.weatherbit.io/v2.0/current?city=lviv&key=856f04db3dae40928356fab650022272`
+      `https://api.weatherbit.io/v2.0/current?city=${city}&key=856f04db3dae40928356fab650022272`
     );
   }
  
@@ -10,7 +10,6 @@ async function getWeather(city = "Lviv") {
       getCity();
      }
       }
-    
   )
   let submitCity = document.getElementById("submit");
   submitCity.addEventListener("click", getCity);
@@ -18,18 +17,6 @@ async function getWeather(city = "Lviv") {
   function getCity() {
     let city = document.getElementById("enteredCity").value;
     console.log(city);
-  
-    // const paragraphsRange = new Range();
-  
-    // const current = document.getElementById("current");
-    // const request = document.getElementById("request");
-  
-    // paragraphsRange.selectNodeContents(current);
-    // paragraphsRange.deleteContents();
-    // paragraphsRange.selectNodeContents(request);
-    // paragraphsRange.deleteContents();
-    let i = 0;
-  
     getWeather(city)
       .then(response => response.json())
       .then(data => {
