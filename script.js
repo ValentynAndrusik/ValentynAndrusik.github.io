@@ -3,8 +3,7 @@ async function getWeather(city = "Lviv") {
     `http://api.weatherstack.com/current?access_key=128e9f062ce7ce0e464f0847488e6ce7&query=${city}`
   );
 }
-
-// let arr = ["Observation time : ", "temperature : ", ""];
+ 
 let arr = [
   "Observation time",
   "Temperature",
@@ -23,7 +22,14 @@ let arr = [
   "Visibility",
   "Is day"
 ];
-
+let input = document.getElementById("enteredCity")
+input.addEventListener('keydown', function(e) {
+   if (e.keyCode === 13) {
+    getCity();
+   }
+    }
+  
+)
 let submitCity = document.getElementById("submit");
 submitCity.addEventListener("click", getCity);
 
@@ -48,13 +54,20 @@ function getCity() {
     .then(data => {
       console.log(data)
       for (keyData in data) {
-        console.log(typeof keyData);
+        console.log(keyData);
         if (keyData === "request") {
-          for (keysInsideKeyData in data[keyData]) {
-            const paragraph = document.createElement("p");
-            paragraph.textContent = `${keysInsideKeyData}: ${data[keyData][keysInsideKeyData]}`;
-            request.append(paragraph);
-          }
+          console.log(data[keyData].query)
+          // let header = `Weather in ${data[keyData].query}`
+          const paragraph = document.createElement("p");
+          paragraph.textContent = `Weather in ${data[keyData].query}`;
+          request.append(paragraph)
+          // for (keysInsideKeyData in data[keyData]) {
+          //   const paragraph = document.createElement("p");
+          //   paragraph.textContent = `${keysInsideKeyData}: ${data[keyData][keysInsideKeyData]}`;
+          //   request.append(paragraph);
+          // }
+
+
         }
          else if (keyData === "current") {
           for (keysInsideKeyData in data[keyData]) {
