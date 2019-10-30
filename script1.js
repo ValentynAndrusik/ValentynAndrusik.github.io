@@ -79,11 +79,13 @@ async function getWeather(city = "Lviv") {
         let path = data.data[0];
         header2.textContent = `Weather in ${path.city_name}, ${path.country_code}. Time zone - ${path.timezone}`;
         header.append(header2);
+        console.log(path.weather.sunrise);
         current.innerHTML =`
         Temperature : ${path.temp} Celsius degree
         <br>Feels Like: ${path.app_temp} Celsius degree
 
         <br>Weather description: ${path.weather.description}
+        <br>Sunrise time: ${path.sunrise} (HH:MM)
         <br>Pressure: ${path.wind_spd} mb
         <br>Wind speed: ${path.wind_spd} m/s
         <br>Wind direction: ${path.wind_dir} degrees
