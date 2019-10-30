@@ -1,15 +1,27 @@
-/* body {
-  background-color: #b3e5fc;
-} */
+body {
+  background-color: #323639;
+}
 #container {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 80%;
   margin: 0 auto 0 auto;
   padding: 20px;
+  background-color: #D6D6D7;
 }
 #current {
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  padding: 15px;
+  background-color: white;
 }
-#request {
-  border: 1px solid green;
+
+nav{
+  background-color: #282C2F;
+  margin-top:40px;
+  padding: 25px;
+}
+.h2{
+  color: #E8EAED;
+}
+.form-control{
+  width: 60%;
 }
