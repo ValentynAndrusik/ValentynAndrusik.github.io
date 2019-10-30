@@ -2,14 +2,12 @@ body {
   background-color: #323639;
 }
 #container {
-  /* border: 1px solid black; */
   width: 80%;
   margin: 0 auto 0 auto;
   padding: 20px;
   background-color: #D6D6D7;
 }
 #current {
-  /* border: 1px solid red; */
   padding: 15px;
   background-color: white;
 }
@@ -27,7 +25,6 @@ nav{
   z-index: 60;
 }
 .wrapperNav{
-  /* border:1px solid white; */
   width: 80%;
   margin: 0 auto 0 auto;
 }

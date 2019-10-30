@@ -6,7 +6,7 @@ let paragraphForResponse = document.getElementById("errorMessage");
         paragraphForResponse.innerHTML = "Geolocation is not supported by this browser.";
     }
   })();
-
+  
   function showPosition(position) {
     console.log(position);
     paragraphForResponse.innerHTML =
