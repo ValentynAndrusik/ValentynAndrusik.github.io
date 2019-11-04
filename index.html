@@ -12,7 +12,7 @@
   <body>
       <nav>
         <div class="wrapperNav">
-          <h2 class="h2">Сurrent weather and forecas</h2>
+          <h2 class="h2">Сurrent weather and forecast</h2>
           <div class="form-inline">
             <input class="form-control mr-sm-2" id="enteredCity" type="search" placeholder="City" aria-label="Search">
             <input class="btn btn-outline-success my-2 my-sm-0" id="submit" type="button" value="Search">
@@ -20,9 +20,12 @@
         </div>
       </nav>
   
-    <div id="container">
+    <div id="container" class="">
       <div id="header"></div>
-      <div id="current"></div>
+      <div id="current">
+        <div id="icon"></div>
+        <div id="informationsAboutWeather"></div>
+      </div>
     </div>
 
     <p id="errorMessage"></p>

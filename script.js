@@ -13,41 +13,63 @@ async function getWeather(city = "Lviv") {
   )
   let submitCity = document.getElementById("submit");
   submitCity.addEventListener("click", getCity);
-  
-  function getCity() {
-    let city = document.getElementById("enteredCity").value;
-    console.log(city);
 
-    const paragraphsRange = new Range();
-    const current = document.getElementById("current");
+  function getCity() {
+    let city = input.value;
+    const range = new Range();
+    const container = document.getElementById("container");
     const header = document.getElementById("header");
-    paragraphsRange.selectNodeContents(current);
-    paragraphsRange.deleteContents();
-    paragraphsRange.selectNodeContents(header);
-    paragraphsRange.deleteContents();
+    const informationsAboutWeather = document.getElementById("informationsAboutWeather");
+    const icon = document.getElementById("icon");
+    
+    
+    range.selectNodeContents(informationsAboutWeather);
+    range.deleteContents();
+    range.selectNodeContents(header);
+    range.deleteContents();
+    range.selectNodeContents(icon);
+    range.deleteContents();
     
     const header2 = document.createElement("h2");
 
     getWeather(city)
+      // try{
       .then(response => response.json())
+      // }
+      // catch(err){
+      //   alert("enter correct name");
+      // }
       .then(data => {
-        console.log(data.data[0]);
-        
-        let path = data.data[0];
-        header2.textContent = `Weather in ${path.city_name}, ${path.country_code}. Time zone - ${path.timezone}`;
-        header.append(header2);
-        console.log(path.weather.sunrise);
-        current.innerHTML =`
-        Temperature : ${path.temp} Celsius degree
-        <br>Feels Like: ${path.app_temp} Celsius degree
-        <br>Weather description: ${path.weather.description}
-        <br>Sunrise time: ${path.sunrise} (HH:MM)
-        <br>Pressure: ${path.wind_spd} mb
-        <br>Wind speed: ${path.wind_spd} m/s
-        <br>Wind direction: ${path.wind_dir} degrees
-        <br>Verbal wind direction: ${path.wind_cdir_full} degrees
-        <br>Relative humidity: ${path.rh} %
-        <br>Cloud coverage: ${path.clouds} %`;
+        if(data.data){
+          let path = data.data[0];
+          let iconCode = path.weather.icon;
+          const urlForIcon =`https://www.weatherbit.io/static/img/icons/${iconCode}.png`;
+          const createIcon = document.createElement('img');
+          container.setAttribute("class", "container")
+          createIcon.src = urlForIcon;
+          icon.appendChild(createIcon);
+
+          console.log(data.data[0]);
+          
+          header2.textContent = `Weather in ${path.city_name}, ${path.country_code}. Time zone - ${path.timezone}`;
+          header.append(header2);
+          informationsAboutWeather.innerHTML =`
+          <span class ="parameters">Weather description:</span> ${path.weather.description}
+          <br><span class ="parameters">Temperature:</span> ${path.temp} Celsius degree
+          <br><span class ="parameters">Feels Like:</span> ${path.app_temp} Celsius degree
+          <br><span class ="parameters">Sunrise time:</span> ${path.sunrise} (HH:MM)
+          <br><span class ="parameters">Pressure:</span> ${path.wind_spd} mb
+          <br><span class ="parameters">Wind speed:</span> ${path.wind_spd} m/s
+          <br><span class ="parameters">Wind direction:</span> ${path.wind_dir} degrees
+          <br><span class ="parameters">Verbal wind direction:</span> ${path.wind_cdir_full} degrees
+          <br><span class ="parameters">Relative humidity:</span> ${path.rh} %
+          <br><span class ="parameters">Cloud coverage:</span> ${path.clouds} %`;
+      } else {
+        // header2.textContent = `Please enter city`;
+        // header2.setAttribute("class", "error");
+        // header.append(header2);
+        alert(`Please enter city`);
+      }
      })
      
   }
