@@ -1,5 +1,5 @@
 # ValentynAndrusik.github.io
-Test task for Ralabs.
+
 This application consist of 3 files "index.html", "script.js" and "style.css".
 For testing or using this application you can use this url https://valentynandrusik.github.io/ (hosted on GitHub).
 Or you can clone this repository to your computer and run the application from local server.
